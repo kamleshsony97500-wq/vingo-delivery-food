@@ -1,3 +1,4 @@
+
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config();
@@ -21,13 +22,13 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors:{
-  origin: [
-    "https://food.kamleshdev.com",
-     "https://vingo-abwe.onrender.com",
+    origin: [
+      "https://food.kamleshdev.com",
+      "https://vingo-abwe.onrender.com",
     ],
-  credentials:true,
-  methods:["POST", "GET"]
-}
+    credentials:true,
+    methods:["POST", "GET"]
+  }
 })
 
 app.set("io", io)
@@ -40,13 +41,18 @@ app.use((req, res, next) => {
   next();
 });
 
-
 // konse local sever connect kar sakte hai 
 app.set("trust proxy", 1); // after deploy time add other not login //
+
+// Updated CORS: allow both domains
 app.use(cors({
-  origin: "https://vingo-abwe.onrender.com",
+  origin: [
+    "https://food.kamleshdev.com",
+    "https://vingo-abwe.onrender.com",
+  ],
   credentials: true,
 }));
+
 // global routes convert in json//
 app.use(express.json());
 app.use(cookieParser());
