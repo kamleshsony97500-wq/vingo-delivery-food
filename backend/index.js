@@ -21,7 +21,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
   cors:{
-  origin:"https://vingo-abwe.onrender.com",
+  origin:"https://food.kamleshdev.com",
   credentials:true,
   methods:["POST", "GET"]
 }
